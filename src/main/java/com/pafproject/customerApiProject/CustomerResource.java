@@ -53,10 +53,10 @@ public class CustomerResource {
 		}
 		
 		@DELETE
-		@Path("/deletecustomer/{id}")
+		@Path("/deleteCustomer/{id}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public void deleteProduct(@PathParam("id") int id) {
-		//	cr.deletecustomer(id);
+		public String deleteProduct(@PathParam("id") int id) {
+			return cr.deleteCustomer(id);
 		}
 		@PUT
 		@Path("/update") 
@@ -66,6 +66,12 @@ public class CustomerResource {
 		{ 
 		// cr.updateCustomer(product); 
 		 return "Updated";
+		}
+		@GET
+		@Path("/")
+		@Produces(MediaType.APPLICATION_JSON)
+		public List<Customer> getallcustomer(){
+			return cr.getAllCustomers();
 		}
 }
 

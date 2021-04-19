@@ -129,19 +129,22 @@ public class CustomerRepository {
 		return cd;
 		
 	}
-//	public void deleteProduct(int id) {
-//
-//		try {
-//			Connection connection = db.connect();
-//			
-//			String deleteProduct = "delete from product where id = '"+id+"'";
-//			PreparedStatement ps = connection.prepareStatement(deleteProduct);
-//			ps.execute();
-//			
-//			connection.close();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
+	public String deleteCustomer(int id) {
+		String output = "";
+		try {
+			Connection con = getconnection();
+			
+			String deleteCustomer = "DELETE FROM customer WHERE id = '"+id+"'";
+			PreparedStatement ps = con.prepareStatement(deleteCustomer);
+			ps.execute();
+			
+			output = "Delete Successful";
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return output;
+	}
 		
 	public void updateCustomer(Customer customer) {
 		
