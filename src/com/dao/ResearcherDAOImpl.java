@@ -9,7 +9,8 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 
 	private DBConnection dbConnection = new DBConnection();
 	
-	public String create(Researcher res) {
+	@Override
+	public String createReseracher(Researcher res) {
 		Connection connection = dbConnection.getConnection();
 		String output = "";
 		String insertQuery = "insert into researcher values (?,?,?,?,?,?)";
@@ -33,29 +34,29 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		return output;
 	}
 	
-	public void createReseracher(String firstName , String lastName, String department) {
-		
-		Connection connection = dbConnection.getConnection();
-		
-		String insertQuery = "insert into researcher values (?,?,?,?)";
-		try {
-			PreparedStatement preStatement = connection.prepareStatement(insertQuery);
-			preStatement.setInt(1, 0);
-			preStatement.setString(2, firstName);
-			preStatement.setString(3, lastName);
-			preStatement.setString(4, department);
-			preStatement.execute();
-			
-			connection.close();
-			
-		} catch(SQLException|NullPointerException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//	public void createReseracher(String firstName , String lastName, String department) {
+//		
+//		Connection connection = dbConnection.getConnection();
+//		
+//		String insertQuery = "insert into researcher values (?,?,?,?)";
+//		try {
+//			PreparedStatement preStatement = connection.prepareStatement(insertQuery);
+//			preStatement.setInt(1, 0);
+//			preStatement.setString(2, firstName);
+//			preStatement.setString(3, lastName);
+//			preStatement.setString(4, department);
+//			preStatement.execute();
+//			
+//			connection.close();
+//			
+//		} catch(SQLException|NullPointerException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 	
 	
 	@Override
@@ -114,16 +115,23 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		return object;
 	}
 	
-	public void updateResearcher(int id, String firstName, String lastName, String department) {
+	
+	@Override
+	public String updateResearcher(Researcher res) {
 		
 		Connection connection = dbConnection.getConnection();
 		
-		String updateQuery = "update researcher set first_name = '"+firstName+"' , last_name =  '"+lastName+"', department = '"+department+"', "
-				+ "where id = '"+id+"' ";
+		String output = "";
+		
+		String updateQuery = "update researcher set first_name = '"+res.getFirstName()+"' , last_name =  '"+res.getLastName()+"', email = '"+res.getEmail()+"',  "
+				+ " department = '"+res.getDepartment()+"' , product = '"+res.getProduct()+"' where id = '"+res.getResearcherID()+"' ";
 		
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(updateQuery);
 			preStatement.execute();
+			
+			output = "Updated Successfully";
+			
 			connection.close();
 			
 		} catch (SQLException|NullPointerException e) {
@@ -131,7 +139,7 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		return output;
 	}
 	
 	
