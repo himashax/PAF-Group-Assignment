@@ -1,4 +1,4 @@
-package com.dao;
+package com.dbConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

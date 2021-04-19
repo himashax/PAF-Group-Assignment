@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.dbConnection.DBConnection;
 import com.models.Sponser;
 
 
@@ -35,7 +36,7 @@ public class SponserDaoImpl {
 			result = "Inserted Successfully!!";
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return result;
@@ -60,7 +61,7 @@ public class SponserDaoImpl {
 				s1.add(s);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return s1;
@@ -101,7 +102,7 @@ public class SponserDaoImpl {
 		
 		connection.close();
 		} catch (SQLException e) {
-		// TODO Auto-generated catch block
+
 		e.printStackTrace();
 		}
 		return result;
@@ -122,7 +123,7 @@ public class SponserDaoImpl {
 				s.setCompanyName(rs.getString(5));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     	return s;
