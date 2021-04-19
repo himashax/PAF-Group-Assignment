@@ -135,20 +135,21 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 	
 	
 	@Override
-	public void deleteResearcher(int id) {
+	public String deleteResearcher(int id) {
 		
 		Connection connection = dbConnection.getConnection();
 		String deleteQuery = "delete from researcher where id = '"+id+"' ";
+		String result = "";
 		PreparedStatement preStatement;
 		try {
 			preStatement = connection.prepareStatement(deleteQuery);
 			preStatement.execute();
+			result = "Record Deleted Successfully";
 			connection.close();
 		} catch (SQLException|NullPointerException e) {
 			e.printStackTrace();
 		}
+		return result;
 	}
-
-	
 	
 }

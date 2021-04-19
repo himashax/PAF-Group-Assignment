@@ -12,6 +12,6 @@ public interface IResearcherDAO {
 	
 	public Researcher getResearcherByID(int id);
 	
-	public void deleteResearcher(int id);
+	public String deleteResearcher(int id);
 	
 }
