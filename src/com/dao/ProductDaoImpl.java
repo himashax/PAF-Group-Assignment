@@ -20,21 +20,18 @@ DBConnection db = new DBConnection();
 		products = new ArrayList<>();
 
 		Product prod1 = new Product();
-//		prod1.setId(1);
 		prod1.setProduct_id(123);
 		prod1.setName("Sir");
 		prod1.setDate("15-04-2020");
 		prod1.setPrice(2000.00);
 
 		Product prod2 = new Product();
-//		prod2.setId(2);
 		prod2.setProduct_id(456);
 		prod2.setName("Sand");
 		prod2.setDate("18-04-2020");
 		prod2.setPrice(36500.00);
 
 		Product prod3 = new Product();
-//		prod3.setId(3);
 		prod3.setProduct_id(789);
 		prod3.setName("Fire");
 		prod3.setDate("15-04-2020");
@@ -70,13 +67,11 @@ DBConnection db = new DBConnection();
 			
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 		products.add(p1);
-		System.out.println(products);
 		return p1;
 	}
 	
@@ -103,7 +98,7 @@ DBConnection db = new DBConnection();
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -131,34 +126,14 @@ DBConnection db = new DBConnection();
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
 		return product;
 	}
 	
-	/*public void updateProduct(int id, int product_id, String name, String date, Double price) {
-		Connection connection = db.connect();
-		
-		String updateProduct = "update product set product_id = '"+product_id+"' , product_name =  '"+name+"', date = '"+date+"' ,"
-				+ " price = '"+price+"' where id = '"+id+"' ";
-		
-		try {
-			PreparedStatement preStatement = connection.prepareStatement(updateProduct);
-			preStatement.executeUpdate();
-			connection.close();
-			
-		} catch (SQLException|NullPointerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-	}*/
-	
+
 	public void updateProduct(Product product) {
 		
 		try {
@@ -201,7 +176,6 @@ DBConnection db = new DBConnection();
 		pro.setDate("2021-01-20");
 		pro.setPrice(90000);
 		
-		//createProduct(pro);
-		System.out.println("Hari");
+
 	}
 }

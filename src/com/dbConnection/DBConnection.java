@@ -20,12 +20,7 @@ public Connection connect() {
 			
 			e.printStackTrace();
 		}
-		System.out.println("Connected");
 		return connection;
 	}
 	
-//	public static void main(String[] args) {
-//		Connection con = connect();
-//		System.out.println("hari");
-//	}
 }

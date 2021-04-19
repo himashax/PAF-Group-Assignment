@@ -33,7 +33,6 @@ public class ProductService {
 	@Path("/q")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> getAllProducts() {
-		//return pro.getAllProducts();
 		return pro.listProducts();
 	}
 
