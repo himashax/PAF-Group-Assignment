@@ -9,9 +9,9 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 
 	private DBConnection dbConnection = new DBConnection();
 	
-	public Researcher create(Researcher res) {
+	public String create(Researcher res) {
 		Connection connection = dbConnection.getConnection();
-		
+		String output = "";
 		String insertQuery = "insert into researcher values (?,?,?,?,?,?)";
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(insertQuery);
@@ -23,13 +23,14 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 			preStatement.setInt(6, res.getProduct());
 			preStatement.execute();
 			
+			output = "Inserted Sucessfully";
+			
 			connection.close();
 			
 		} catch(SQLException|NullPointerException|IndexOutOfBoundsException e) {
 			e.printStackTrace();
 		}
-		
-		return res;
+		return output;
 	}
 	
 	public void createReseracher(String firstName , String lastName, String department) {
