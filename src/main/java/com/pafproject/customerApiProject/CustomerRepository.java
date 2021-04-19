@@ -143,24 +143,25 @@ public class CustomerRepository {
 //			e.printStackTrace();
 //		}
 		
-//	public void updateCustomer(Customer customer) {
-//		
-//		try {
-//			Connection con = getconnection();
-//			
-//			String updateCustomer = "UPDATE customer SET id='"+customer.getId()+"',name='"+customer.getName()+"',address='"+customer.getAddress()+"',phoneno='"+customer.getPhoneno()+"',email='"+customer.getEmail()+"',occupation='"+customer.getOccupation()+"',needproduct='"+customer.getNeedproduct()+"' WHERE id='"+customer.getId()+"'";
-//			PreparedStatement st = con.prepareStatement(updateCustomer);
-//			
-//			
-//			
-//			st.executeUpdate();
-//			
-//			con.close();
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//		}
+	public void updateCustomer(Customer customer) {
+		
+		try {
+			Connection con = getconnection();
+			
+			String updateCustomer = "UPDATE customer SET id='"+customer.getId()+"',name='"+customer.getName()+"',address='"+customer.getAddress()+"',phoneno='"+customer.getPhoneno()+"',email='"+customer.getEmail()+"',occupation='"+customer.getOccupation()+"',needproduct='"+customer.getNeedproduct()+"' WHERE id='"+customer.getId()+"'";
+			PreparedStatement st = con.prepareStatement(updateCustomer);
+			
+			
+			
+			st.executeUpdate();
+			
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
+}
 
 	
 	
