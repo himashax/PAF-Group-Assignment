@@ -19,12 +19,6 @@ DBConnection db = new DBConnection();
 		
 		products = new ArrayList<>();
 
-		Product prod1 = new Product();
-		prod1.setProduct_id(123);
-		prod1.setName("Sir");
-		prod1.setDate("15-04-2020");
-		prod1.setPrice(2000.00);
-
 		Product prod2 = new Product();
 		prod2.setProduct_id(456);
 		prod2.setName("Sand");
@@ -37,15 +31,9 @@ DBConnection db = new DBConnection();
 		prod3.setDate("15-04-2020");
 		prod3.setPrice(50000.00);
 
-		products.add(prod1);
 		products.add(prod2);
 		products.add(prod3);
 
-	}
-	
-	public List<Product> getAllProducts(){
-		
-		return products;
 	}
 	
 	public Product createProduct(Product p1) {
@@ -76,7 +64,7 @@ DBConnection db = new DBConnection();
 	}
 	
 	public ArrayList<Product> listProducts(){
-		ArrayList<Product> product_list = new ArrayList<>();
+		ArrayList<Product> productList = new ArrayList<>();
 		
 		try {
 			Connection connection = db.connect();
@@ -94,7 +82,7 @@ DBConnection db = new DBConnection();
 				product.setPrice(rs.getDouble(5));
 
 				
-				product_list.add(product);
+				productList.add(product);
 			}
 			
 		} catch (SQLException e) {
@@ -102,7 +90,7 @@ DBConnection db = new DBConnection();
 			e.printStackTrace();
 		}
 		
-		return product_list;
+		return productList;
 	}
 	
 	public Product getProductById(int id){
@@ -167,6 +155,25 @@ DBConnection db = new DBConnection();
 		}
 		
 	}
+	
+	public void saveResearchers(Product p1) {
+	Connection connection = db.connect();
+	String insertProduct = "INSERT INTO `productRes`(`product_id`, `resId`) VALUES (?,?)";
+
+	try {
+//		for (String resId : p1.getRes()) {
+			PreparedStatement ps = connection.prepareStatement(insertProduct);
+//
+//			ps.setInt(1, p1.getProductId());
+//			ps.setString(2, resId);
+//
+//			ps.execute();
+//		}
+		connection.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
 	
 	public static void main(String[] args) {
 		Product pro = new Product();
