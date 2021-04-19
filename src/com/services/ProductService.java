@@ -21,16 +21,9 @@ public class ProductService {
 
 	private ProductDaoImpl pro = new ProductDaoImpl();
 	List<Product> products;
-	
-	@GET
-	@Path("/r")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String hello() {
-		return "Hello world.";
-	}
 
 	@GET
-	@Path("/q")
+	@Path("/productList")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> getAllProducts() {
 		return pro.listProducts();
@@ -61,7 +54,7 @@ public class ProductService {
 	public String updateProduct(Product product) 
 	{ 
 	 pro.updateProduct(product); 
-	 return "Updated";
+	 return "Updated successfully";
 	}
 	
 	@DELETE
