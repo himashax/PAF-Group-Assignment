@@ -23,14 +23,17 @@ public class SponserDaoImpl {
 		try {
 		    Connection connection = db.connect();
 		  
+		 // create a prepared statement
 		    String insertQuery = "insert into sponser values (?,?,?,?,?)";
 		
 			PreparedStatement ps = connection.prepareStatement(insertQuery);
+		// binding values
 			ps.setInt(1, 0);
 			ps.setString(2, firstName);
 			ps.setString(3, lastName);
 			ps.setFloat(4, sAmount);
 			ps.setString(5, compName);
+		// execute the statement
 			ps.execute();
 			
 			result = "Inserted Successfully!!";
@@ -53,6 +56,7 @@ public class SponserDaoImpl {
 			ResultSet rs = stat.executeQuery(list);
 			while(rs.next()) {
 				Sponser s = new Sponser();
+				
 				s.setId(rs.getInt(1));
 				s.setfName(rs.getString(2));
 				s.setlName(rs.getString(3));
@@ -72,10 +76,12 @@ public class SponserDaoImpl {
 		String result="";
 		try {
 		Connection connection = db.connect();
+	// create a prepared statement
 		String updateQuery = "update sponser set firstName = '"+firstName+"', lastName = '"+lastName+"', sAmount = '"+sAmount+"', compName ='"+compName+"' where id = '"+id+"' ";
 
 		PreparedStatement ps;
 		ps = connection.prepareStatement(updateQuery);
+	//execute the statement	
 		ps.execute();
 		
 		result="Updated Successfully!!"; 
@@ -92,10 +98,11 @@ public class SponserDaoImpl {
 		String result ="";
 		try {
 		Connection connection = db.connect();
-
+	// create a prepared statement
 		String delQuery = "delete from sponser where id = '"+id+"'";
 
 		PreparedStatement ps = connection.prepareStatement(delQuery);
+	//execute the statement
 		ps.execute();
 		
 		result = "Deleted Successfully!!";
