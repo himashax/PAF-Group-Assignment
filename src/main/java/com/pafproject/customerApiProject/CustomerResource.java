@@ -44,12 +44,8 @@ public class CustomerResource {
 		@GET
 		@Path("/customer/{id}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public String getCities(@PathParam("id") String id) {
-		Customer res = new Customer();
-		res = cr.getcustomerid(Integer.parseInt(id));
-		Gson test = new Gson();
-		String jsonObject = test.toJson(res);
-		return jsonObject;
+		public Customer getCities(@PathParam("id") int id) {
+			 return cr.getcustomerid(id);
 		}
 		
 		@DELETE
@@ -64,8 +60,8 @@ public class CustomerResource {
 		@Produces(MediaType.TEXT_PLAIN) 
 		public String updateProduct(Customer product) 
 		{ 
-		// cr.updateCustomer(product); 
-		 return "Updated";
+		 return cr.updateCustomer(product); 
+		 
 		}
 		@GET
 		@Path("/")

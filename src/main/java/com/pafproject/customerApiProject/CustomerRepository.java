@@ -25,16 +25,7 @@ public class CustomerRepository {
 	 List<Customer> customers;
 	public CustomerRepository() {
 		
-//	String url ="Jdbc:mysql://localhost:3306/customerapiproject";
-//	String username = "root";
-//	String password = "";
-//	try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			con = DriverManager.getConnection(url,username,password);
-//			
-//	} catch (Exception e) {
-//			System.out.println(e);
-//	}
+
 		customers = new ArrayList<>();
 		
 		
@@ -120,10 +111,9 @@ public class CustomerRepository {
 				
 			}
 			
-			//con.close();
+			
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return cd;
@@ -146,8 +136,8 @@ public class CustomerRepository {
 		return output;
 	}
 		
-	public void updateCustomer(Customer customer) {
-		
+	public String updateCustomer(Customer customer) {
+		String output = "";
 		try {
 			Connection con = getconnection();
 			
@@ -157,11 +147,12 @@ public class CustomerRepository {
 			
 			
 			st.executeUpdate();
-			
+			output = "Update Sucessfull";
 			con.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+		return output;
 
 	}
 }
