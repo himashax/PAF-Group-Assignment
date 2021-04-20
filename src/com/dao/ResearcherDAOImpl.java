@@ -13,15 +13,16 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 	public String createReseracher(Researcher res) {
 		Connection connection = dbConnection.getConnection();
 		String output = "";
-		String insertQuery = "insert into researcher values (?,?,?,?,?,?)";
+		String insertQuery = "insert into researcher values (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(insertQuery);
 			preStatement.setInt(1, 0);
-			preStatement.setString(2, res.getFirstName());
-			preStatement.setString(3, res.getLastName());
-			preStatement.setString(4, res.getEmail());
-			preStatement.setString(5, res.getDepartment());
-			preStatement.setInt(6, res.getProduct());
+			preStatement.setString(2, res.getResearcherID());
+			preStatement.setString(3, res.getFirstName());
+			preStatement.setString(4, res.getLastName());
+			preStatement.setString(5, res.getEmail());
+			preStatement.setString(6, res.getDepartment());
+			preStatement.setInt(7, res.getProduct());
 			preStatement.execute();
 			
 			output = "Inserted Sucessfully";
@@ -33,30 +34,6 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		}
 		return output;
 	}
-	
-//	public void createReseracher(String firstName , String lastName, String department) {
-//		
-//		Connection connection = dbConnection.getConnection();
-//		
-//		String insertQuery = "insert into researcher values (?,?,?,?)";
-//		try {
-//			PreparedStatement preStatement = connection.prepareStatement(insertQuery);
-//			preStatement.setInt(1, 0);
-//			preStatement.setString(2, firstName);
-//			preStatement.setString(3, lastName);
-//			preStatement.setString(4, department);
-//			preStatement.execute();
-//			
-//			connection.close();
-//			
-//		} catch(SQLException|NullPointerException e) {
-//			e.printStackTrace();
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
 	
 	
 	@Override
@@ -71,12 +48,13 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 			ResultSet rs = statement.executeQuery(retrieveQuery);
 			while(rs.next()) {
 				Researcher researcher = new Researcher();
-				researcher.setResearcherID(rs.getInt(1));
-				researcher.setFirstName(rs.getString(2));
-				researcher.setLastName(rs.getString(3));
-				researcher.setEmail(rs.getString(4));
-				researcher.setDepartment(rs.getString(5));
-				researcher.setProduct(rs.getInt(6));
+				researcher.setId(rs.getInt(1));
+				researcher.setResearcherID(rs.getString(2));
+				researcher.setFirstName(rs.getString(3));
+				researcher.setLastName(rs.getString(4));
+				researcher.setEmail(rs.getString(5));
+				researcher.setDepartment(rs.getString(6));
+				researcher.setProduct(rs.getInt(7));
 				researcherList.add(researcher);
 			}
 			connection.close();
@@ -99,12 +77,13 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(deleteQuery);
 			while(rs.next()) {
-				object.setResearcherID(rs.getInt(1));
-				object.setFirstName(rs.getString(2));
-				object.setLastName(rs.getString(3));
-				object.setEmail(rs.getString(4));
-				object.setDepartment(rs.getString(5));
-				object.setProduct(rs.getInt(6));
+				object.setId(rs.getInt(1));
+				object.setResearcherID(rs.getString(2));
+				object.setFirstName(rs.getString(3));
+				object.setLastName(rs.getString(4));
+				object.setEmail(rs.getString(5));
+				object.setDepartment(rs.getString(6));
+				object.setProduct(rs.getInt(7));
 			}
 			connection.close();
 		} catch (SQLException|NullPointerException e) {

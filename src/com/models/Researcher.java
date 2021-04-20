@@ -2,17 +2,24 @@ package com.models;
 
 public class Researcher {
 
-	private int researcherID;
+	private int id;
+	private String researcherID;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String department;
 	private int product;
 	
-	public int getResearcherID() {
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getResearcherID() {
 		return researcherID;
 	}
-	public void setResearcherID(int researcherID) {
+	public void setResearcherID(String researcherID) {
 		this.researcherID = researcherID;
 	}
 	public String getFirstName() {

@@ -61,7 +61,7 @@ public class ResearcherResource {
 	{ 
 		Gson test = new Gson();
 		Researcher resObject = test.fromJson(researcher, Researcher.class);
-		return resDAOObject.updateResearcher(resObject); 
+		return resDAOObject.updateResearcher(resObject) + "\n" + researcher; 
 	}
 	
 	@DELETE
