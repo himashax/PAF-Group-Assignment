@@ -24,7 +24,26 @@
       </plugin>
     </plugins>
   </build>
+  
+  <properties>
+<jersey.version>1.18.3</jersey.version>
+</properties>
+  
   <dependencies>
+  
+  <dependency>
+<groupId>com.sun.jersey</groupId>
+<artifactId>jersey-json</artifactId>
+<version>1.18.1</version>
+</dependency>
+
+<dependency>
+<groupId>com.owlike</groupId>
+<artifactId>genson</artifactId>
+<version>0.99</version>
+</dependency>
+  
+  
 <dependency>
 <groupId>com.sun.jersey</groupId>
 <artifactId>jersey-bundle</artifactId>
