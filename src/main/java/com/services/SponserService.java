@@ -1,6 +1,6 @@
 package com.services;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -19,6 +19,7 @@ import com.models.Sponser;
 public class SponserService {
 
 SponserDaoImpl sponserDao = new SponserDaoImpl();
+
 @GET
 @Path("/{id}")
 @Produces(MediaType.APPLICATION_JSON)
@@ -29,7 +30,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @GET
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Sponser> getAllSponsers() {
+	public List<Sponser> getAllSponsers() {
 	return sponserDao.sponserList();
 }
 
@@ -41,19 +42,20 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 	return s;
 }
 
-@DELETE
-@Path("/deleteSponser/{id}")
-@Produces(MediaType.APPLICATION_JSON)
-	public String deleteSponser(@PathParam("id") int id) {
-	String s = sponserDao.deleteSponserData(id);
-	return s;
-}
-	
+
 @PUT
 @Path("/updateSponser")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String updateSponser(Sponser sp) {
 	String s = sponserDao.updateSponserData(sp.getId(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
 	return s;
+}
+
+@DELETE
+@Path("/deleteSponser/{id}")
+@Produces(MediaType.APPLICATION_JSON)
+	public String deleteSponser(@PathParam("id") int id) {
+	return sponserDao.deleteSponserData(id);
+	
 }
 }

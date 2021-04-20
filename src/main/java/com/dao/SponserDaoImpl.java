@@ -54,6 +54,7 @@ public class SponserDaoImpl {
 		try {
 			Statement stat = con.createStatement();
 			ResultSet rs = stat.executeQuery(list);
+		//iterate through the rows in the result set
 			while(rs.next()) {
 				Sponser s = new Sponser();
 				
