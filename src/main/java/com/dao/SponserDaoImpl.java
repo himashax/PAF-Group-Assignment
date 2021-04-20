@@ -17,22 +17,23 @@ import com.models.Sponser;
 public class SponserDaoImpl {
 	private DBConnection db = new DBConnection();
 
-	public String insertSponserData(String firstName, String lastName, float sAmount, String compName) {
+	public String insertSponserData(int sponserID, String firstName, String lastName, float sAmount, String compName) {
 		
 		  String result ="";
 		try {
 		    Connection connection = db.connect();
 		  
 		 // create a prepared statement
-		    String insertQuery = "insert into sponser values (?,?,?,?,?)";
+		    String insertQuery = "insert into sponser values (?,?,?,?,?,?)";
 		
 			PreparedStatement ps = connection.prepareStatement(insertQuery);
 		// binding values
 			ps.setInt(1, 0);
-			ps.setString(2, firstName);
-			ps.setString(3, lastName);
-			ps.setFloat(4, sAmount);
-			ps.setString(5, compName);
+			ps.setInt(2, sponserID);
+			ps.setString(3, firstName);
+			ps.setString(4, lastName);
+			ps.setFloat(5, sAmount);
+			ps.setString(6, compName);
 		// execute the statement
 			ps.execute();
 			
@@ -59,10 +60,11 @@ public class SponserDaoImpl {
 				Sponser s = new Sponser();
 				
 				s.setId(rs.getInt(1));
-				s.setfName(rs.getString(2));
-				s.setlName(rs.getString(3));
-				s.setAmount(rs.getFloat(4));
-				s.setCompanyName(rs.getString(5));
+				s.setSponserID(rs.getInt(2));
+				s.setfName(rs.getString(3));
+				s.setlName(rs.getString(4));
+				s.setAmount(rs.getFloat(5));
+				s.setCompanyName(rs.getString(6));
 				s1.add(s);
 			}
 		} catch (SQLException e) {
@@ -73,12 +75,12 @@ public class SponserDaoImpl {
 		
 	}
 	
-	public String updateSponserData(int id, String firstName, String lastName,float sAmount,String compName) {
+	public String updateSponserData(int id, int sponserID, String firstName, String lastName,float sAmount,String compName) {
 		String result="";
 		try {
 		Connection connection = db.connect();
 	// create a prepared statement
-		String updateQuery = "update sponser set firstName = '"+firstName+"', lastName = '"+lastName+"', sAmount = '"+sAmount+"', compName ='"+compName+"' where id = '"+id+"' ";
+		String updateQuery = "update sponser set sponserID = '"+sponserID+"',firstName = '"+firstName+"', lastName = '"+lastName+"', sAmount = '"+sAmount+"', compName ='"+compName+"' where id = '"+id+"' ";
 
 		PreparedStatement ps;
 		ps = connection.prepareStatement(updateQuery);
@@ -125,10 +127,11 @@ public class SponserDaoImpl {
 			ResultSet rs = st.executeQuery(objById);
 			while(rs.next()) {
 				s.setId(rs.getInt(1));
-				s.setfName(rs.getString(2));
-				s.setlName(rs.getString(3));
-				s.setAmount(rs.getFloat(4));
-				s.setCompanyName(rs.getString(5));
+				s.setSponserID(rs.getInt(2));
+				s.setfName(rs.getString(3));
+				s.setlName(rs.getString(4));
+				s.setAmount(rs.getFloat(5));
+				s.setCompanyName(rs.getString(6));
 			}
 		} catch (SQLException e) {
 			

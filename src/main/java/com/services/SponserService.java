@@ -28,7 +28,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 }
 
 @GET
-@Path("/")
+@Path("/getSponsers")
 @Produces(MediaType.APPLICATION_JSON)
 	public List<Sponser> getAllSponsers() {
 	return sponserDao.sponserList();
@@ -38,7 +38,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String addSponser(Sponser sp) {
-	String s = sponserDao.insertSponserData(sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
+	String s = sponserDao.insertSponserData(sp.getSponserID(),sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
 	return s;
 }
 
@@ -47,7 +47,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @Path("/updateSponser")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String updateSponser(Sponser sp) {
-	String s = sponserDao.updateSponserData(sp.getId(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
+	String s = sponserDao.updateSponserData(sp.getId(),sp.getSponserID(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
 	return s;
 }
 

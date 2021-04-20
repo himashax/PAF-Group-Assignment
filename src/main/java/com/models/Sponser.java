@@ -2,6 +2,7 @@ package com.models;
 
 public class Sponser {
 	private int id;
+	private int sponserID;
 	private String fName;
 	private String lName;
 	private float amount;
@@ -12,6 +13,13 @@ public class Sponser {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getSponserID() {
+		return sponserID;
+	}
+	public void setSponserID(int sponserID) {
+		this.sponserID = sponserID;
 	}
 	public String getfName() {
 		return fName;
