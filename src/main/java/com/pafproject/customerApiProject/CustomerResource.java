@@ -58,9 +58,9 @@ public class CustomerResource {
 		@Path("/update") 
 		@Consumes(MediaType.APPLICATION_JSON) 
 		@Produces(MediaType.TEXT_PLAIN) 
-		public String updateProduct(Customer product) 
+		public String updateCustomer(Customer customer) 
 		{ 
-		 return cr.updateCustomer(product); 
+		 return cr.updateCustomer(customer); 
 		 
 		}
 		@GET
