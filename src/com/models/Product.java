@@ -3,10 +3,11 @@ package com.models;
 public class Product {
 
 	private int id;
-	private int product_id;
+	private int productId;
 	private String name;
 	private String date;
 	private double price;
+	private String res;
 	
 	
 	
@@ -34,16 +35,22 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getProduct_id() {
-		return product_id;
+	public int getProductId() {
+		return productId;
 	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	
+	public String getRes() {
+		return res;
+	}
+	public void setRes(String res) {
+		this.res = res;
+	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", product_id=" + product_id + ", name=" + name + ", date=" + date + ", price="
+		return "Product [id=" + id + ", productId=" + productId + ", name=" + name + ", date=" + date + ", price="
 				+ price + "]";
 	}
 }
