@@ -16,9 +16,6 @@ public class ProductDaoImpl {
 	DBConnection db = new DBConnection();
 	
 	List<Product> products;
-	public ProductDaoImpl() {
-
-	}
 	
 	public Product createProduct(Product p1) {
 
@@ -30,9 +27,9 @@ public class ProductDaoImpl {
 
 			ps.setInt(1, p1.getProductId());
 			ps.setString(2, p1.getName());
-			ps.setString(3, p1.getDate());
+			ps.setDate(3, p1.getDate());
 			ps.setDouble(4, p1.getPrice());
-			ps.setString(5, p1.getRes());
+			ps.setString(5, p1.getResId());
 
 			ps.execute();
 
@@ -58,9 +55,9 @@ public class ProductDaoImpl {
 				product.setId(rs.getInt(1));
 				product.setProductId(rs.getInt(2));
 				product.setName(rs.getString(3));
-				product.setDate(rs.getString(4));
+				product.setDate(rs.getDate(4));
 				product.setPrice(rs.getDouble(5));
-				product.setRes(rs.getString(6));
+				product.setResId(rs.getString(6));
 
 				productList.add(product);
 			}
@@ -86,9 +83,9 @@ public class ProductDaoImpl {
 				product.setId(rs.getInt(1));
 				product.setProductId(rs.getInt(2));
 				product.setName(rs.getString(3));
-				product.setDate(rs.getString(4));
+				product.setDate(rs.getDate(4));
 				product.setPrice(rs.getDouble(5));
-				product.setRes(rs.getString(6));
+				product.setResId(rs.getString(6));
 
 			}
 
@@ -106,7 +103,7 @@ public class ProductDaoImpl {
 			Connection connection = db.connect();
 
 			String updateProduct = "update product set product_id = '" + product.getProductId() + "', product_name ='"
-					+ product.getName() + "', date = '" + product.getDate() + "', price = '" + product.getPrice()+ "', resId = '"+ product.getRes()+"' where id = '" + product.getId() + "'";
+					+ product.getName() + "', date = '" + product.getDate() + "', price = '" + product.getPrice()+ "', resId = '"+ product.getResId()+"' where id = '" + product.getId() + "'";
 
 			PreparedStatement ps = connection.prepareStatement(updateProduct);
 			ps.executeUpdate();

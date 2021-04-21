@@ -1,13 +1,15 @@
 package com.models;
 
+import java.sql.Date;
+
 public class Product {
 
 	private int id;
 	private int productId;
 	private String name;
-	private String date;
+	private Date date;
 	private double price;
-	private String res;
+	private String resId;
 	
 	
 	
@@ -23,10 +25,10 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public double getPrice() {
@@ -42,11 +44,11 @@ public class Product {
 		this.productId = productId;
 	}
 	
-	public String getRes() {
-		return res;
+	public String getResId() {
+		return resId;
 	}
-	public void setRes(String res) {
-		this.res = res;
+	public void setResId(String resId) {
+		this.resId = resId;
 	}
 	@Override
 	public String toString() {
