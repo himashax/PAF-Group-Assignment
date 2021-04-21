@@ -16,24 +16,24 @@ import com.dao.ProductDaoImpl;
 import com.google.gson.Gson;
 import com.models.Product;
 
-@Path("/Product")
+@Path("/product")
 public class ProductService {
 
 	private ProductDaoImpl pro = new ProductDaoImpl();
 	List<Product> products;
 
+	@POST
+	@Path("/addProduct")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Product createProduct(Product p1) {
+		return pro.createProduct(p1);
+	}
+	
 	@GET
 	@Path("/productList")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> getAllProducts() {
 		return pro.listProducts();
-	}
-
-	@POST
-	@Path("/product")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Product createProduct(Product p1) {
-		return pro.createProduct(p1);
 	}
 	
 	@GET
