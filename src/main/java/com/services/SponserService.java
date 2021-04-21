@@ -38,8 +38,8 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String addSponser(Sponser sp) {
-	String s = sponserDao.insertSponserData(sp.getSponserID(),sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
-	return s;
+	return sponserDao.insertSponserData(sp.getSponserID(),sp.getProductId(),sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
+	
 }
 
 
@@ -47,7 +47,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @Path("/updateSponser")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String updateSponser(Sponser sp) {
-	String s = sponserDao.updateSponserData(sp.getId(),sp.getSponserID(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
+	String s = sponserDao.updateSponserData(sp.getId(),sp.getSponserID(),sp.getProductId(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
 	return s;
 }
 
