@@ -118,6 +118,7 @@ public class SponserDaoImpl {
 		return result;
 		}
 	
+	//getting values by id
     public Sponser getSponserById(int id) {
     	Sponser s = new Sponser();
     	Connection connection = db.connect();

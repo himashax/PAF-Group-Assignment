@@ -1,13 +1,14 @@
 package com.models;
 
 public class Sponser {
-	private int id;
-	private int sponserID;
-	private String fName;
-	private String lName;
-	private float amount;
-	private String companyName;
+	private int id;         	//declare variables
+	private int sponserID;  	//declare variables
+	private String fName;   	//declare variables
+	private String lName;   	//declare variables
+	private float amount;  		//declare variables
+	private String companyName; //declare variables
 	
+	//getters and setters
 	public int getId() {
 		return id;
 	}
