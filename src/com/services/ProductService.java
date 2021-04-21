@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.dao.ProductDaoImpl;
-import com.google.gson.Gson;
 import com.models.Product;
 
 @Path("/product")
@@ -25,8 +24,10 @@ public class ProductService {
 	@POST
 	@Path("/addProduct")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Product createProduct(Product p1) {
-		return pro.createProduct(p1);
+	@Produces(MediaType.TEXT_PLAIN) 
+	public String createProduct(Product p1) {
+		pro.createProduct(p1);
+		return "Inserted product " + p1.getProductId() + " successfully";
 	}
 	
 	@GET
@@ -35,16 +36,12 @@ public class ProductService {
 	public List<Product> getAllProducts() {
 		return pro.listProducts();
 	}
-	
+
 	@GET
-	@Path("/getProduct/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getProducts(@PathParam("id") int id) { 
-		Product product = new Product();
-		product = pro.getProductById(id);
-		Gson test = new Gson();
-		String jsonObject = test.toJson(product);
-		return jsonObject;
+	public Product getProById(@PathParam("id") int id) {
+		return pro.getProductById(id);
 	}
 
 	@PUT
@@ -54,13 +51,14 @@ public class ProductService {
 	public String updateProduct(Product product) 
 	{ 
 	 pro.updateProduct(product); 
-	 return "Updated successfully";
+	 return "Updated "+ product.getProductId() +" product successfully";
 	}
 	
 	@DELETE
 	@Path("/delPro/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public void deleteProduct(@PathParam("id") int id) {
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deleteProduct(@PathParam("id") int id) {
 		pro.deleteProduct(id);
+		return "Deleted successfully";
 	}
 }
