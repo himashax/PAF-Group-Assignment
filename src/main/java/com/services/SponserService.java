@@ -34,6 +34,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 	return sponserDao.sponserList();
 }
 
+
 @POST
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -43,6 +44,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 }
 
 
+//update
 @PUT
 @Path("/updateSponser")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -51,6 +53,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 	return s;
 }
 
+//delete
 @DELETE
 @Path("/deleteSponser/{id}")
 @Produces(MediaType.APPLICATION_JSON)
