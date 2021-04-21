@@ -12,20 +12,11 @@ import com.dbConnection.DBConnection;
 import com.models.Product;
 
 public class ProductDaoImpl {
-DBConnection db = new DBConnection();
+	
+	DBConnection db = new DBConnection();
 	
 	List<Product> products;
 	public ProductDaoImpl() {
-		
-		products = new ArrayList<>();
-
-		Product prod3 = new Product();
-		prod3.setProductId(789);
-		prod3.setName("Fire");
-		prod3.setDate("15-04-2020");
-		prod3.setPrice(50000.00);
-
-		products.add(prod3);
 
 	}
 	
@@ -56,8 +47,8 @@ DBConnection db = new DBConnection();
 		return p1;
 	}
 	
-	public ArrayList<Product> listProducts(){
-		ArrayList<Product> productList = new ArrayList<>();
+	public List<Product> listProducts(){
+		List<Product> productList = new ArrayList<>();
 		
 		try {
 			Connection connection = db.connect();
