@@ -8,7 +8,6 @@ public class Researcher {
 	private String lastName;
 	private String email;
 	private String department;
-	private int product;
 	
 	public int getId() {
 		return id;
@@ -46,12 +45,7 @@ public class Researcher {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	public int getProduct() {
-		return product;
-	}
-	public void setProduct(int product) {
-		this.product = product;
-	}
+
 	
 	
 }

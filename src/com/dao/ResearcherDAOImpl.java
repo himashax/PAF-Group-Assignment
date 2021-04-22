@@ -13,7 +13,7 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 	public String createReseracher(Researcher res) {
 		Connection connection = dbConnection.getConnection();
 		String output = "";
-		String insertQuery = "insert into researcher values (?,?,?,?,?,?,?)";
+		String insertQuery = "insert into researcher values (?,?,?,?,?,?)";
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(insertQuery);
 			preStatement.setInt(1, 0);
@@ -22,7 +22,6 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 			preStatement.setString(4, res.getLastName());
 			preStatement.setString(5, res.getEmail());
 			preStatement.setString(6, res.getDepartment());
-			preStatement.setInt(7, res.getProduct());
 			preStatement.execute();
 			
 			output = "Inserted Sucessfully";
@@ -54,7 +53,6 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 				researcher.setLastName(rs.getString(4));
 				researcher.setEmail(rs.getString(5));
 				researcher.setDepartment(rs.getString(6));
-				researcher.setProduct(rs.getInt(7));
 				researcherList.add(researcher);
 			}
 			connection.close();
@@ -83,7 +81,6 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 				object.setLastName(rs.getString(4));
 				object.setEmail(rs.getString(5));
 				object.setDepartment(rs.getString(6));
-				object.setProduct(rs.getInt(7));
 			}
 			connection.close();
 		} catch (SQLException|NullPointerException e) {
@@ -103,7 +100,7 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		String output = "";
 		
 		String updateQuery = "update researcher set first_name = '"+res.getFirstName()+"' , last_name =  '"+res.getLastName()+"', email = '"+res.getEmail()+"',  "
-				+ " department = '"+res.getDepartment()+"' , product = '"+res.getProduct()+"' where id = '"+res.getResearcherID()+"' ";
+				+ " department = '"+res.getDepartment()+"' where id = '"+res.getResearcherID()+"' ";
 		
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(updateQuery);
