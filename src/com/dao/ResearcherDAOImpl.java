@@ -104,8 +104,11 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(updateQuery);
 			
-			preStatement.execute();
-			output = "Updated Successfully";
+			//preStatement.executeUpdate();
+			if(preStatement.executeUpdate() > 0) {
+				output = "Updated Successfully";
+			}
+			
 			connection.close();
 			
 		} catch (SQLException|NullPointerException e) {
