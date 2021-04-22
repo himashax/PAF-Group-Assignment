@@ -56,7 +56,7 @@ public class ResearcherResource {
 	@PUT
 	@Path("/edit") 
 	@Consumes(MediaType.APPLICATION_JSON) 
-	@Produces(MediaType.TEXT_PLAIN) 
+	@Produces(MediaType.APPLICATION_JSON) 
 	public String updateResearcher(String researcher) 
 	{ 
 		Gson test = new Gson();

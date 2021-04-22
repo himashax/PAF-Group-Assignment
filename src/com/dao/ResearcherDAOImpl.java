@@ -99,15 +99,13 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		
 		String output = "";
 		
-		String updateQuery = "update researcher set first_name = '"+res.getFirstName()+"' , last_name =  '"+res.getLastName()+"', email = '"+res.getEmail()+"',  "
-				+ " department = '"+res.getDepartment()+"' where id = '"+res.getResearcherID()+"' ";
+		String updateQuery = "update researcher set researcherID = '"+res.getResearcherID()+"', first_name = '"+res.getFirstName()+"' , last_name =  '"+res.getLastName()+"', email = '"+res.getEmail()+"', department = '"+res.getDepartment()+"' where id = '"+res.getId()+"' ";
 		
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(updateQuery);
+			
 			preStatement.execute();
-			
 			output = "Updated Successfully";
-			
 			connection.close();
 			
 		} catch (SQLException|NullPointerException e) {
