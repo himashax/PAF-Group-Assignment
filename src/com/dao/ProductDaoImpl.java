@@ -74,7 +74,7 @@ public class ProductDaoImpl {
 
 		try {
 			Connection connection = db.connect();
-			String productList = "select * from product where id = '" + id + "'";
+			String productList = "select * from product where product_id = '" + id + "'";
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(productList);
 
