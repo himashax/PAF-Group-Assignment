@@ -1,6 +1,6 @@
 package com.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.models.Researcher;
 
@@ -8,7 +8,7 @@ public interface IResearcherDAO {
 
 	public String createReseracher(Researcher res);
 	
-	public ArrayList<Researcher> listResearchers();
+	public List<Researcher> listResearchers();
 	
 	public Researcher getResearcherByID(int id);
 	

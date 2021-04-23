@@ -1,6 +1,6 @@
 package com.resources;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -37,7 +37,7 @@ public class ResearcherResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getResearchers() { 
 		
-		ArrayList<Researcher> list = resDAOObject.listResearchers();
+		List<Researcher> list = resDAOObject.listResearchers();
 		Gson test = new Gson();
 		
 		//returns string value
