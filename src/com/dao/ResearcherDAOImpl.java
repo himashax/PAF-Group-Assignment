@@ -32,7 +32,7 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 			preStatement.setString(5, res.getEmail());
 			preStatement.setString(6, res.getDepartment());
 			
-			//execute parameterized insertQuery
+			//Add researcher
 			preStatement.execute();
 			
 			output = "Inserted Sucessfully";
@@ -157,6 +157,8 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 			PreparedStatement preStatement = connection.prepareStatement(updateQuery);
 			
 			//preStatement.executeUpdate();
+			
+			//Update researcher
 			if(preStatement.executeUpdate() > 0) {
 				output = "Updated Successfully";
 			}
@@ -188,6 +190,8 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(deleteQuery);
+			
+			//Delete researcher
 			preStatement.execute();
 			result = "Record Deleted Successfully";
 			
