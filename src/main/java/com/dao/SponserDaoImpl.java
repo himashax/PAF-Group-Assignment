@@ -19,6 +19,7 @@ public class SponserDaoImpl {
 	//DBConnection class object
 	private DBConnection db = new DBConnection();
 
+	
 	//create a new sponsor by passing the column values
 	public String insertSponserData(int sponserID, int productId, String firstName, String lastName, float sAmount, String compName) {
 		

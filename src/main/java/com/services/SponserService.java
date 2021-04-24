@@ -20,6 +20,7 @@ public class SponserService {
 
 SponserDaoImpl sponserDao = new SponserDaoImpl();
 
+//get sponser details of the particular id
 @GET
 @Path("/{id}")
 @Produces(MediaType.APPLICATION_JSON)
@@ -27,6 +28,8 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 	return sponserDao.getSponserById(id);
 }
 
+
+//get all the sponsers
 @GET
 @Path("/getSponsers")
 @Produces(MediaType.APPLICATION_JSON)
@@ -35,8 +38,9 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 }
 
 
+//add Sponsers
 @POST
-@Path("/")
+@Path("/addSponsers")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String addSponser(Sponser sp) {
 	return sponserDao.insertSponserData(sp.getSponserID(),sp.getProductId(),sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
@@ -44,7 +48,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 }
 
 
-//update
+//update sponser details according to the id
 @PUT
 @Path("/updateSponser")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -53,7 +57,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 	return s;
 }
 
-//delete
+//delete sponser for the given id
 @DELETE
 @Path("/deleteSponser/{id}")
 @Produces(MediaType.APPLICATION_JSON)
