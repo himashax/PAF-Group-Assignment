@@ -32,13 +32,21 @@ public class CustomerResource {
 			
 		}
 		//path to add  customer
+		
 		@POST
 		@Path("/customer")
 		@Consumes(MediaType.APPLICATION_JSON)
-		public Customer addCustomer(Customer c1) {
+		@Produces(MediaType.TEXT_PLAIN)
+		public String addCustomer(Customer c1) {
 			
-	
-			return cr.createcustomer(c1);
+			if(c1.getName().isEmpty()) {
+				return "name is null";
+			}
+			else {
+			 cr.createcustomer(c1);
+			 return "inserted successfully";
+			}
+		
 		}
 		//path to retrive customer
 		@GET
