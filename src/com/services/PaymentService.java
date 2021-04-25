@@ -32,7 +32,20 @@ public class PaymentService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String createPayment(Payment payment) {
 	
-	return payDao.createPayment(payment);
+		 if(payment.getPaymentID() == 0) {
+			 return "Payment id cannot be empty" ;
+		 }else if(payment.getAmount() == 0) {
+			 return "amount cannot be empty";
+		 }else if(payment.getType().isEmpty()) {
+			 return "type cannot be empty" ;
+		 }else if(payment.getProductID() == 0) {
+			 return "product id cannot be empty";
+		 }else if(payment.getCustomerID() == 0) {
+			 return "customer id cannot be empty";
+		 }else {
+			 return payDao.createPayment(payment);
+		 }
+	
 	}
 
 
@@ -54,7 +67,21 @@ public class PaymentService {
 	@Produces(MediaType.TEXT_PLAIN) 
 	public String updateProduct(Payment payment) 
 	{ 
+		 if(payment.getId() == 0) {
+			 return "id cannot be empty";
+		 }else if(payment.getPaymentID() == 0) {
+			 return "Payment id cannot be empty" ;
+		 }else if(payment.getAmount() == 0) {
+			 return "amount cannot be empty";
+		 }else if(payment.getType().isEmpty()) {
+			 return "type cannot be empty" ;
+		 }else if(payment.getProductID() == 0) {
+			 return "product id cannot be empty";
+		 }else if(payment.getCustomerID() == 0) {
+			 return "customer id cannot be empty";
+		 }else {
 		return payDao.updatePayment(payment); 
+		 }
 	}
 	@DELETE
 	@Path("/delPayment/{id}")
