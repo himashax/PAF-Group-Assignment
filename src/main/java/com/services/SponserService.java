@@ -38,12 +38,31 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 }
 
 
+
+
 //add Sponsers
 @POST
 @Path("/addSponsers")
 @Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.TEXT_PLAIN)
 	public String addSponser(Sponser sp) {
-	return sponserDao.insertSponserData(sp.getSponserID(),sp.getProductId(),sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
+	
+	//check whether the fields are empty
+	if(sp.getfName().isEmpty()||sp.getlName().isEmpty()||sp.getCompanyName().isEmpty()) {
+		return "Please fill the necessary fields";
+	//check the amount is greater than or equal to 0(positive value)	
+	}else if(sp.getAmount()<=0) {
+		return "Please enter positive amount";
+	//check whether the id fields are empty	
+	}else if(sp.getProductId()==0||sp.getSponserID()==0) {
+		return "Please enter an integer value for id";
+	//check whether the sponserID is a unique value	
+	}else if(sponserDao.getSponserById(sp.getSponserID()).getId()!=0) {
+		return "SponserID should be an unique value";
+	}
+	else {
+		return sponserDao.insertSponserData(sp.getSponserID(),sp.getProductId(),sp.getfName(), sp.getlName(), sp.getAmount(), sp.getCompanyName());
+	}
 	
 }
 
@@ -53,8 +72,8 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @Path("/updateSponser")
 @Consumes(MediaType.APPLICATION_JSON)
 	public String updateSponser(Sponser sp) {
-	String s = sponserDao.updateSponserData(sp.getId(),sp.getSponserID(),sp.getProductId(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
-	return s;
+	return sponserDao.updateSponserData(sp.getId(),sp.getSponserID(),sp.getProductId(),sp.getfName(),sp.getlName(),sp.getAmount(),sp.getCompanyName());
+	
 }
 
 

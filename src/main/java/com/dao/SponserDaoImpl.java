@@ -167,7 +167,7 @@ public class SponserDaoImpl {
     	Connection connection = db.connect();
     	
     //sql query to choose a sponser with particualr id	
-    	String objById = "select *from sponser where id = '"+id+"'";
+    	String objById = "select *from sponser where sponserID = '"+id+"'";
     	try {
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(objById);
