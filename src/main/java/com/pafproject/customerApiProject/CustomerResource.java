@@ -39,8 +39,8 @@ public class CustomerResource {
 		@Produces(MediaType.TEXT_PLAIN)
 		public String addCustomer(Customer c1) {
 			
-			if(c1.getName().isEmpty()) {
-				return "name is null";
+			if(c1.getName().isEmpty() || c1.getAddress().isEmpty() || c1.getEmail().isEmpty()) {
+				return "empty fields";
 			}
 			else {
 			 cr.createcustomer(c1);
@@ -69,7 +69,13 @@ public class CustomerResource {
 		@Produces(MediaType.TEXT_PLAIN) 
 		public String updateCustomer(Customer customer) 
 		{ 
-		 return cr.updateCustomer(customer); 
+			if(customer.getName().isEmpty() || customer.getAddress().isEmpty() || customer.getEmail().isEmpty()) {
+				return "empty fields";
+			}
+			else {
+				cr.updateCustomer(customer); 
+				return "Updated successfully";
+			}
 		 
 		}
 		@GET
