@@ -154,4 +154,14 @@ public class ProductDaoImpl {
 
 	}
 
+	public boolean checkCharacter(double price) {
+		try {
+			String.valueOf(price);
+			return true;
+		}catch(NumberFormatException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

@@ -26,15 +26,18 @@ public class ProductService {
 	@Produces(MediaType.TEXT_PLAIN) 
 	public String createProduct(Product p1) {
 		//check the name field is empty or date is null or price is 0
-		if(p1.getName().isEmpty() || p1.getDate() == null || p1.getPrice()==0) {
+		if(p1.getName().isEmpty() || p1.getDate() == null || p1.getPrice()==0) {			
 			return "Fill in the empty fields";
 		}
 		//check whether the new product Id is a duplicate Id 
 		if(pro.getProductById(p1.getProductId()).getId() == 0) {
+			
 			//call the createProduct() method to create the new product 
 			pro.createProduct(p1);
+			
 			//return a successful message
 			return "Inserted product " + p1.getProductId() + " successfully";
+			
 		}else {
 			//return message if the product id is already existing
 			return "Already existing product id";
