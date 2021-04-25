@@ -7,6 +7,7 @@ public class Product_Purchase {
 	private int ID;
 	private Date date;
 	private double total;
+	
 	public int getID() {
 		return ID;
 	}

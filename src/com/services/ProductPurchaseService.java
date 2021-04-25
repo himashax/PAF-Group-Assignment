@@ -57,6 +57,4 @@ public String updatePurchaseItem(Product_Purchase item) {
 	String result = purchasedProduct.updateProductPurchaseItems(item.getID(), item.getDate(), item.getTotal());
 	return result;
 }
-
-
 }
