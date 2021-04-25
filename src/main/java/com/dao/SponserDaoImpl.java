@@ -171,6 +171,7 @@ public class SponserDaoImpl {
     	try {
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(objById);
+	//Iterate through the rows in the result set		
 			while(rs.next()) {
 				s.setId(rs.getInt(1));
 				s.setSponserID(rs.getInt(2));

@@ -2,6 +2,7 @@ package com.services;
 
 import java.util.List;
 
+//for REST service
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,6 +26,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 @Path("/{id}")
 @Produces(MediaType.APPLICATION_JSON)
 	public Sponser getSponshershipById(@PathParam("id") int id) {
+	//return the details according to the id
 	return sponserDao.getSponserById(id);
 }
 
