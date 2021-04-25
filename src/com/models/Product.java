@@ -2,14 +2,6 @@ package com.models;
 
 import java.sql.Date;
 
-/**
- * @author sgeet
- *
- */
-/**
- * @author sgeet
- *
- */
 public class Product {
 
 	//declare the variables
@@ -82,10 +74,4 @@ public class Product {
 		this.resId = resId;
 	}
 	
-	//display the product in String format
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", productId=" + productId + ", name=" + name + ", date=" + date + ", price="
-				+ price + "]";
-	}
 }
