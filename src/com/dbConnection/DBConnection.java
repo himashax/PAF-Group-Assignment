@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
+	//get db connection
 	public Connection getConnection() {
 
 		Connection connection = null;

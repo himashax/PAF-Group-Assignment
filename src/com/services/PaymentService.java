@@ -21,11 +21,8 @@ import com.model.Payment;
 public class PaymentService {
 
 	PaymentDAOImpl payDao = new PaymentDAOImpl();
-
-	public static void main(String[] args) {
-		
-	}
 	
+	//create payment API
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -49,18 +46,23 @@ public class PaymentService {
 	}
 
 
+	//retrieve all payments API
 	@GET
 	@Path("/getPayment")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Payment> getAllPayment(){
 		return payDao.listPayments();
 	}
+	
+	//retrieve payment by id
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 		public Payment getPayById(@PathParam("id") int id) {
 		return payDao.getPaymentById(id);
 	}
+	
+	//update payment API
 	@PUT
 	@Path("/updatepayment") 
 	@Consumes(MediaType.APPLICATION_JSON) 
@@ -83,6 +85,8 @@ public class PaymentService {
 		return payDao.updatePayment(payment); 
 		 }
 	}
+	
+	//delete payment API
 	@DELETE
 	@Path("/delPayment/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

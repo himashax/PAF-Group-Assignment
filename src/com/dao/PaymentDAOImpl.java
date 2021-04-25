@@ -12,6 +12,7 @@ public class PaymentDAOImpl {
 	
 	 DBConnection db = new DBConnection();
 
+	 //create new payment
 	public String createPayment(Payment paymentObj) {
 
 	Connection con = db.getConnection();
@@ -40,6 +41,7 @@ public class PaymentDAOImpl {
 	return result;
 	}
 
+	//retrieve all the payments
 	public List<Payment> listPayments(){
 
 		List<Payment> paymentList = new  ArrayList<>();
@@ -71,6 +73,7 @@ public class PaymentDAOImpl {
 		
 		return paymentList;
 	}
+	//retrieve payment by id
 	public Payment getPaymentById(int id) {
     	Payment p = new Payment();
     	Connection connection = db.getConnection();
@@ -93,6 +96,7 @@ public class PaymentDAOImpl {
     	return p;
     	
 }
+	//update payment details
 	public String updatePayment(Payment payment) {
 		String output = "";
 		try {
@@ -111,6 +115,7 @@ public class PaymentDAOImpl {
 		return output;
 
 	}
+	//delete payment
 	public String delPayment(int id) {
 		String result ="";
 		try {
