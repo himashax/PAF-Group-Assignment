@@ -26,12 +26,13 @@ public class ProductService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String createProduct(Product p1) {
+		
 		// check the name field is empty or date is null or price is 0
 		if (p1.getName().isEmpty() || p1.getDate() == null || p1.getResId().isEmpty()) {
 			return "Fill in the empty fields";
 		} else if (p1.getPrice() <= 0) {
 			// if the price is negative or zero
-			return "Enter a positive value for price";
+			return "Price should be a positive value";
 		}
 
 		// check whether the new product Id is a duplicate Id
@@ -106,13 +107,15 @@ public class ProductService {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String updateProduct(Product product) {
 		// check whether the name is empty or id is 0 when updating
-		if (product.getName() == null || product.getName().isEmpty() || product.getId() == 0 || product.getResId().isEmpty()) {
+		if (product.getName() == null || product.getName().isEmpty() || product.getId() == 0 || product.getResId().isEmpty() || product.getDate()==null) {
 
 			// display a message to enter the product name if the name field is empty.
 			return "Fill the empty fields";
 		} else if (product.getPrice() <= 0) {
-			return "Enter a positive value for the price";
-		} else {
+			
+			return "Price should be a positive value";
+		}
+		else {
 			// update the product details
 			try {
 				pro.updateProduct(product);
@@ -136,7 +139,7 @@ public class ProductService {
 	@Path("/delproduct/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String deleteProduct(@PathParam("id") int id) {
-		// call the deleteProduct() to delete the product
+		//delete a particular product
 		try {
 			pro.deleteProduct(id);
 		} catch (SQLException e) {

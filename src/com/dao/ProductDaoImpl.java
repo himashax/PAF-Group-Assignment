@@ -13,12 +13,12 @@ import com.models.Product;
 
 public class ProductDaoImpl {
 
-	// instantiating a DBConnection type object
+	// declaring a DBConnection type object
 	DBConnection db = new DBConnection();
 
 	List<Product> products;
 
-	// method to insert a new product passing a Product type object as the parameter
+	//insert a new product by passing a Product type object as the parameter
 	public Product createProduct(Product p1) throws SQLException {
 
 		// establishing a connection
@@ -26,8 +26,6 @@ public class ProductDaoImpl {
 
 		// query to insert a product to the product table in the database
 		String insertProduct = "INSERT INTO `product`(`product_id`, `product_name`, `date`, `price`,`resId`) VALUES (?,?,?,?,?)";
-
-		// set values
 
 		PreparedStatement ps = connection.prepareStatement(insertProduct);
 
@@ -46,7 +44,7 @@ public class ProductDaoImpl {
 		return p1;
 	}
 
-	// method to retrieve the list of all products
+	// retrieve the list of all products
 	public List<Product> listProducts() throws SQLException {
 		List<Product> productList = new ArrayList<>();
 
@@ -81,9 +79,10 @@ public class ProductDaoImpl {
 		// declare a product type object
 		Product product = new Product();
 
+		//the connection object to the database
 		Connection connection = db.connect();
 
-		// query to get a particular product by the id
+		// query to get a particular product by the product id
 		String productList = "select * from product where product_id = '" + id + "'";
 
 		Statement st = connection.createStatement();

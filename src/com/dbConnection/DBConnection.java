@@ -25,6 +25,7 @@ public Connection connect() {
 			
 			e.printStackTrace();
 		}
+		//return the connection
 		return connection;
 	}
 	
