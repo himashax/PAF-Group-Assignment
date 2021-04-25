@@ -26,8 +26,6 @@ public class Product_Purchase {
 	}
 	public void setTotal(double total) {
 		this.total = total;
-	}
-	
-	
+	}	
 	
 }

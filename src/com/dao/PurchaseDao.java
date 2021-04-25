@@ -14,7 +14,7 @@ public class PurchaseDao {
 	
 	DBConnection dbconnect = new DBConnection();
 
-
+//create new product_purchased item
 public String insertProductPurchaseItems(Date date , Double total) {
 		
 		
@@ -39,6 +39,7 @@ public String insertProductPurchaseItems(Date date , Double total) {
 	return result;
 	}
 
+	//retrieve all product_purchased items
 		public ArrayList<Product_Purchase> items () {
 			ArrayList<Product_Purchase> p1 = new ArrayList<Product_Purchase> ();
 			Connection con = dbconnect.connect();
@@ -69,6 +70,7 @@ public String insertProductPurchaseItems(Date date , Double total) {
 			
 		}
 		
+		//update product_purchased item 
 public String updateProductPurchaseItems(int id , Date date , Double total) {
 	String result = "";
 			Connection con = dbconnect.connect();
@@ -88,6 +90,7 @@ public String updateProductPurchaseItems(int id , Date date , Double total) {
 		return result;	
 		}
 
+	//delete product_purchased item
 public String deleteProductPurchaseItems(int id) {
 	String result = "";
 			try {
@@ -102,6 +105,7 @@ public String deleteProductPurchaseItems(int id) {
 			}
 			return result;
 }
+	//retrieve product_purchased item by id
 public Product_Purchase getPurchaseProductByID(int id) {
 	
 	Product_Purchase item = new Product_Purchase();
