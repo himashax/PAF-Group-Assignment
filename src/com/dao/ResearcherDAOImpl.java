@@ -156,12 +156,11 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		try {
 			PreparedStatement preStatement = connection.prepareStatement(updateQuery);
 			
-			//preStatement.executeUpdate();
-			
 			//Update researcher
-			if(preStatement.executeUpdate() > 0) {
-				output = "Updated Successfully";
-			}
+			preStatement.executeUpdate();
+			
+			output = "Updated Successfully";
+			
 			
 			//Disconnect from the database
 			connection.close();

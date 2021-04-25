@@ -33,16 +33,6 @@ public class ResearcherResource {
 		
 		if(resObject.getResearcherID().isEmpty()||resObject.getFirstName().isEmpty()||resObject.getLastName().isEmpty()||resObject.getEmail().isEmpty()||resObject.getDepartment().isEmpty()) {
 			return "Fields cannot empty";
-		}else if(resDAOObject.checkAvailability(resObject.getResearcherID())) {
-			return "Researcher already exists";
-		}else if(checkNumericVals(resObject.getFirstName())) {
-			return "First Name cannot be a numeric value";
-		}else if(checkNumericVals(resObject.getLastName())) {
-			return "Last Name cannot be a numeric value";
-		}else if(emailValidation(resObject.getEmail()) == false) {
-			return "Please enter a valid email";
-		}else if(checkNumericVals(resObject.getDepartment())) {
-			return "Department cannot be a numeric value";
 		}else {
 			return resDAOObject.createReseracher(resObject) + "\n" + researcher;
 		}
@@ -83,16 +73,6 @@ public class ResearcherResource {
 		
 		if(resObject.getResearcherID().isEmpty()||resObject.getFirstName().isEmpty()||resObject.getLastName().isEmpty()||resObject.getEmail().isEmpty()||resObject.getDepartment().isEmpty()) {
 			return "Fields cannot empty";
-		}else if(checkNumericVals(resObject.getResearcherID())) {
-			return "Researcher ID cannot be a numeric value";
-		}else if(checkNumericVals(resObject.getFirstName())) {
-			return "First Name cannot be a numeric value";
-		}else if(checkNumericVals(resObject.getLastName())) {
-			return "Last Name cannot be a numeric value";
-		}else if(checkNumericVals(resObject.getEmail())) {
-			return "Email cannot be a numeric value";
-		}else if(checkNumericVals(resObject.getDepartment())) {
-			return "Department cannot be a numeric value";
 		}else {
 			return resDAOObject.updateResearcher(resObject) + "\n" + researcher; 
 		}
@@ -104,30 +84,6 @@ public class ResearcherResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteResearcher(@PathParam("id") int id) {
 		return resDAOObject.deleteResearcher(id);
-	}
-	
-	//Check for numeric values
-	public boolean checkNumericVals(String value) {
-		try {
-			//Converts string to an integer value
-			Integer.parseInt(value);
-			
-			//Returns true if the value can be converted as an integer value
-			return true;
-		}catch(NumberFormatException e) { //catch NumberFormatException exception when converting values
-			e.printStackTrace();
-			
-			//Returns false if the value cannot be converted as an integer value (The value is a string value)
-			return false;
-		}
-	}
-	
-	//Check email format
-	public boolean emailValidation(String email) {
-		String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-		
-		//Returns true if the email matches
-		return email.matches(regex);
 	}
 	  
 }

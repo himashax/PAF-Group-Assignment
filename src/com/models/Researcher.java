@@ -1,7 +1,6 @@
 package com.models;
 
 public class Researcher {
-
 	
 	private int id;
 	private String researcherID;
