@@ -31,7 +31,7 @@ public class CustomerResource {
 			
 			
 		}
-		
+		//path to add  customer
 		@POST
 		@Path("/customer")
 		@Consumes(MediaType.APPLICATION_JSON)
@@ -40,20 +40,21 @@ public class CustomerResource {
 	
 			return cr.createcustomer(c1);
 		}
-		
+		//path to retrive customer
 		@GET
 		@Path("/customer/{id}")
 		@Produces(MediaType.APPLICATION_JSON)
 		public Customer getCities(@PathParam("id") int id) {
 			 return cr.getcustomerid(id);
 		}
-		
+		//path to delete customer
 		@DELETE
 		@Path("/deleteCustomer/{id}")
 		@Produces(MediaType.APPLICATION_JSON)
 		public String deleteProduct(@PathParam("id") int id) {
 			return cr.deleteCustomer(id);
 		}
+		//path to update customer
 		@PUT
 		@Path("/update") 
 		@Consumes(MediaType.APPLICATION_JSON) 

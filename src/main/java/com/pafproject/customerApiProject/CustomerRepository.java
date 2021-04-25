@@ -10,7 +10,7 @@ public class CustomerRepository {
 			String url ="Jdbc:mysql://localhost:3306/customerapiproject";
 			String username = "root";
 			String password = "";
-			try {
+			try {																		//DB Connection
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				con = DriverManager.getConnection(url,username,password);
 				
@@ -25,7 +25,7 @@ public class CustomerRepository {
 	 List<Customer> customers;
 	public CustomerRepository() {
 		
-
+		//declare arraylist
 		customers = new ArrayList<>();
 		
 		
@@ -60,11 +60,12 @@ public class CustomerRepository {
 		customers.add(c2);
 		customers.add(c3);
 	}
-	
+	//method to retrive all the customer
 	public List<Customer> getAllCustomers(){
 		return customers;
 		
 	}
+	//create customer
 	public Customer createcustomer(Customer c1) {
 		String insertSql = "INSERT INTO `customer`(`id`, `name`, `address`, `phoneno`, `email`, `occupation`, `needproduct`) VALUES (?,?,?,?,?,?,?)";
 		Connection con = getconnection();
@@ -88,6 +89,7 @@ public class CustomerRepository {
 		System.out.println(customers);
 		return c1;
 	}
+	//retrive customer
 	public  Customer getcustomerid(int id)
 	{
 		
@@ -119,6 +121,7 @@ public class CustomerRepository {
 		return cd;
 		
 	}
+	//delete customer from data base
 	public String deleteCustomer(int id) {
 		String output = "";
 		try {
@@ -135,7 +138,7 @@ public class CustomerRepository {
 		}
 		return output;
 	}
-		
+		//update customer from data base
 	public String updateCustomer(Customer customer) {
 		String output = "";
 		try {
