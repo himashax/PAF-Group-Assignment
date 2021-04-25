@@ -21,15 +21,18 @@ import com.model.Payment;
 public class PaymentService {
 
 	PaymentDAOImpl payDao = new PaymentDAOImpl();
+
+	public static void main(String[] args) {
+		
+	}
 	
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
-
-	public String createPayment(String payment) {
-	Gson payGson = new Gson();
-	Payment payObj = payGson.fromJson(payment, Payment.class);
-	return payDao.createPayment(payObj) +"\n" + payment ;
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createPayment(Payment payment) {
+	
+	return payDao.createPayment(payment);
 	}
 
 

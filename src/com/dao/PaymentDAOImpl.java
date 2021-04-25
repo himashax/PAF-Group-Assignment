@@ -9,7 +9,8 @@ import com.model.Payment;
 
 public class PaymentDAOImpl {
 
-	DBConnection db = new DBConnection();
+	
+	 DBConnection db = new DBConnection();
 
 	public String createPayment(Payment paymentObj) {
 
