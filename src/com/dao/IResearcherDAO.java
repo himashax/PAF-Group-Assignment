@@ -8,7 +8,7 @@ public interface IResearcherDAO {
 
 	
 	/**
-	 * Add researchers for researcher table
+	 * Add researchers to the researcher table
 	 * @param res
 	 * @return
 	 */

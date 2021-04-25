@@ -15,59 +15,88 @@ import javax.ws.rs.core.MediaType;
 import com.models.Researcher;
 import com.dao.ResearcherDAOImpl;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 @Path("/researchers")
 public class ResearcherResource {
 
 	private ResearcherDAOImpl resDAOObject = new ResearcherDAOImpl();
+	private Gson gsonObject;
 	
+	
+	/**
+	 * @param researcher
+	 * @return
+	 */
 	@POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public String addResearcher(String researcher) {
-		Gson test = new Gson();
-		Researcher resObject = test.fromJson(researcher, Researcher.class);
+		gsonObject = new Gson();
+		Researcher resObject = gsonObject.fromJson(researcher, Researcher.class);
+	
+	
 		return resDAOObject.createReseracher(resObject) + "\n" + researcher;
     }
 	
+
+	
+	/**
+	 * @return
+	 */
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getResearchers() { 
 		
 		List<Researcher> list = resDAOObject.listResearchers();
-		Gson test = new Gson();
+		gsonObject = new Gson();
 		
 		//returns string value
-		return test.toJson(list);
+		return gsonObject.toJson(list);
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getCities(@PathParam("id") int id) { 
-		Researcher res = resDAOObject.getResearcherByID(id);
-		Gson test = new Gson();
-		return test.toJson(res);
+	public String getResearcher(@PathParam("id") int id) { 
+		
+		
+			Researcher res = resDAOObject.getResearcherByID(id);
+			gsonObject = new Gson();
+			return gsonObject.toJson(res);
+		
 	}
 	
+	/**
+	 * @param researcher
+	 * @return
+	 */
 	@PUT
 	@Path("/edit") 
 	@Consumes(MediaType.APPLICATION_JSON) 
 	@Produces(MediaType.APPLICATION_JSON) 
 	public String updateResearcher(String researcher) 
 	{ 
-		Gson test = new Gson();
-		Researcher resObject = test.fromJson(researcher, Researcher.class);
+		gsonObject = new Gson();
+		Researcher resObject = gsonObject.fromJson(researcher, Researcher.class);
 		return resDAOObject.updateResearcher(resObject) + "\n" + researcher; 
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	@DELETE
 	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteResearcher(@PathParam("id") int id) {
-		return resDAOObject.deleteResearcher(id);
+		
+		
+			return resDAOObject.deleteResearcher(id);
+		
 	}
 }
