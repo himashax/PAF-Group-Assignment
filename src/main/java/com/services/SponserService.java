@@ -39,7 +39,6 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 
 
 
-
 //add Sponsers
 @POST
 @Path("/addSponsers")
