@@ -205,12 +205,15 @@ public class ResearcherDAOImpl implements IResearcherDAO {
 		return result;
 	}
 	
-	public boolean checkAvailability(int id) {
+	
+	//Check if the researcher already exist
+	public boolean checkAvailability(String id) {
 		boolean researcherExist = false;
 		
 		Connection connection = dbConnection.getConnection();
 		
-		String availabilityQuery = "select id from researcher where id = '"+id+"' ";
+		//Query for checking existence of data
+		String availabilityQuery = "select researcherID from researcher where researcherID = '"+id+"' ";
 		
 		try {
 			Statement st = connection.createStatement();
