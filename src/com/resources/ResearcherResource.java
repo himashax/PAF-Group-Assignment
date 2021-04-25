@@ -33,9 +33,12 @@ public class ResearcherResource {
     public String addResearcher(String researcher) {
 		gsonObject = new Gson();
 		Researcher resObject = gsonObject.fromJson(researcher, Researcher.class);
-	
-	
-		return resDAOObject.createReseracher(resObject) + "\n" + researcher;
+		if(resObject.getResearcherID().isEmpty()||resObject.getFirstName().isEmpty()||resObject.getLastName().isEmpty()||resObject.getEmail().isEmpty()||resObject.getDepartment().isEmpty()) {
+			return "Fields cannot empty";
+		}else {
+			return resDAOObject.createReseracher(resObject) + "\n" + researcher;
+		}
+		
     }
 	
 
@@ -64,11 +67,13 @@ public class ResearcherResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getResearcher(@PathParam("id") int id) { 
 		
-		
+		if(resDAOObject.checkAvailability(id)) {
 			Researcher res = resDAOObject.getResearcherByID(id);
 			gsonObject = new Gson();
 			return gsonObject.toJson(res);
-		
+		}else {
+			return "";
+		}
 	}
 	
 	/**
@@ -83,7 +88,11 @@ public class ResearcherResource {
 	{ 
 		gsonObject = new Gson();
 		Researcher resObject = gsonObject.fromJson(researcher, Researcher.class);
-		return resDAOObject.updateResearcher(resObject) + "\n" + researcher; 
+		if(resObject.getResearcherID().isEmpty()||resObject.getFirstName().isEmpty()||resObject.getLastName().isEmpty()||resObject.getEmail().isEmpty()||resObject.getDepartment().isEmpty()) {
+			return "Fields cannot empty";
+		}else {
+			return resDAOObject.updateResearcher(resObject) + "\n" + researcher; 
+		}
 	}
 	
 	/**
@@ -95,8 +104,11 @@ public class ResearcherResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteResearcher(@PathParam("id") int id) {
 		
-		
+		if(resDAOObject.checkAvailability(id)) {
 			return resDAOObject.deleteResearcher(id);
-		
+		}
+		else {
+			return "";
+		}
 	}
 }
