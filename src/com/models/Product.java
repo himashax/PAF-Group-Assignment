@@ -74,4 +74,5 @@ public class Product {
 		this.resId = resId;
 	}
 	
+	
 }
