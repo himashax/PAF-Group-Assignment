@@ -57,6 +57,7 @@ SponserDaoImpl sponserDao = new SponserDaoImpl();
 	return s;
 }
 
+
 //delete sponser for the given id
 @DELETE
 @Path("/deleteSponser/{id}")

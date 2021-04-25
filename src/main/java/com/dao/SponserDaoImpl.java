@@ -24,6 +24,7 @@ public class SponserDaoImpl {
 	public String insertSponserData(int sponserID, int productId, String firstName, String lastName, float sAmount, String compName) {
 		
 		  String result ="";
+		  
 		try {
 		  //set up a database connection
 		    Connection connection = db.connect();
